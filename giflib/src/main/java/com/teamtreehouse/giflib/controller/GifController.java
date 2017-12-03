@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Controller
 public class GifController {
@@ -22,7 +23,9 @@ public class GifController {
     private GifRepository gifRepository;
 
     @RequestMapping("/")
-    String listGifs(){
+    String listGifs(ModelMap modelMap){
+        List<Gif> allGifs = gifRepository.getAllgifs();
+        modelMap.put("gifs", allGifs);
         return "home";
     }
 
