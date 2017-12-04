@@ -29,7 +29,7 @@ public class GifController {
         return "home";
     }
 
-    @RequestMapping("/Gif")
+    @RequestMapping("/gif")
     @ResponseBody
     String gif(){
         return "This will be used for one Gif";

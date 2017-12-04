@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Component
@@ -20,14 +21,23 @@ public class GifRepository {
     );
 
     public Gif findByName(String name){
-        for(Gif gif: ALLGIFS){
-            if (gif.getName().equals(name)){
-                return gif;
-            }
-        }
-        return null;
+       return ALLGIFS.stream()
+               .filter(gif -> name.equals(gif.getName())).findFirst().orElse(null);
+
     }
     public List<Gif> getAllgifs (){
         return new ArrayList<>(ALLGIFS);
+    }
+
+    public List<Gif> findByCategoryId(int id) {
+//        return Collections.singletonList((ALLGIFS.stream()
+//                .filter(gif -> gif.getCategoryId() == id).findAny().orElse(null))
+        List<Gif> gifs = new ArrayList<>();
+        for (Gif gif : ALLGIFS){
+            if (gif.getCategoryId() == id){
+                gifs.add(gif);
+            }
+        }
+        return  gifs;
     }
 }
