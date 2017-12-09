@@ -28,7 +28,7 @@ public class CategoryController {
 
     @RequestMapping("/category/{id}")
     public String category(@PathVariable int id,ModelMap modelMap){
-        Category category = categoryRepository.findCategoryById(id);
+        Category category = categoryRepository.findByUserId(id);
         modelMap.put("category", category);
         List<Gif> gifs = gifRepository.findByCategoryId(id);
         modelMap.put("gifs",gifs);

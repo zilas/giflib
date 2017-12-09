@@ -25,8 +25,12 @@ public class CategoryRepository {
     }
     //finds by real parameter id
     public Category findByUserId(int id) {
-        return ALL_CATEGORIES.stream().findAny().
-                filter(category -> category.getId()==id).orElse(null);
+        for (Category category : ALL_CATEGORIES){
+            if (category.getId() == id){
+                return category;
+            }
+        }
+        return null;
     }
 
 }
