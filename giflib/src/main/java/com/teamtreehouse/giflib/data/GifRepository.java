@@ -40,4 +40,24 @@ public class GifRepository {
         }
         return  gifs;
     }
+
+    public List<Gif> favoritesGifs(){
+        List<Gif> favoriteGifs = new ArrayList<>();
+        for (Gif gif : ALLGIFS){
+            if (gif.isFavorite()){
+                favoriteGifs.add(gif);
+            }
+        }
+        return favoriteGifs;
+    }
+
+    public List<Gif> getBySearch(String q){
+        List<Gif> searchRes = new ArrayList<>();
+        for (Gif gif:ALLGIFS ){
+            if (gif.getName().contains(q)){
+                searchRes.add(gif);
+            }
+        }
+        return searchRes;
+    }
 }

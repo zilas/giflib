@@ -34,4 +34,5 @@ public class CategoryController {
         modelMap.put("gifs",gifs);
         return "category";
     }
+
 }
